@@ -96,7 +96,7 @@ export default function HeroSection() {
           onClick={() => router.push('/dashboard')}
           className="px-8 py-4 sm:px-10 sm:py-5 bg-linear-to-r from-blue-600 to-indigo-600 text-white rounded-full font-bold text-lg sm:text-xl shadow-2xl hover:shadow-blue-500/50 transition-all inline-flex items-center space-x-2"
         >
-          <span>Upload Your First RFP</span>
+          <span>Scan Your First RFP</span>
           <svg
             className="w-6 h-6"
             fill="none"
