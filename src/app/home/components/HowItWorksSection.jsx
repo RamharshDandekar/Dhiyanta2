@@ -6,20 +6,20 @@ import { useState } from 'react';
 const steps = [
   {
     number: 1,
-    title: 'Upload Your Document',
-    description: 'Simply drag and drop any RFP file. Our Sales Agent begins the analysis immediately.',
+    title: 'Scan RFP Portal',
+    description: 'Simply enter the URL of any RFP tender portal. Our Sales Agent instantly scrapes and analyzes the content.',
     mockup: (
-      <div className="bg-white rounded-xl p-6 shadow-xl border-2 border-dashed border-blue-300">
+      <div className="bg-white rounded-xl p-6 shadow-xl border-2 border-blue-300">
         <div className="flex items-center justify-center flex-col space-y-4">
           <svg className="w-16 h-16 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth={2}
-              d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+              d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
             />
           </svg>
-          <p className="text-gray-600 font-medium">Drop your RFP here</p>
+          <p className="text-gray-600 font-medium">Enter portal URL</p>
         </div>
       </div>
     ),
