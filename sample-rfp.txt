@@ -1,0 +1,101 @@
+# REQUEST FOR PROPOSAL (RFP)
+
+## Industrial Equipment Supply Contract
+
+**Issued by:** Acme Manufacturing Corporation
+**RFP Number:** RFP-2024-001
+**Issue Date:** December 7, 2025
+**Submission Deadline:** March 15, 2026
+**Project Value:** Estimated $150,000 - $200,000
+
+---
+
+## 1. PROJECT OVERVIEW
+
+Acme Manufacturing Corporation is seeking qualified vendors to supply industrial equipment for our new production facility in Austin, Texas. The selected vendor will provide comprehensive equipment solutions including installation, testing, and acceptance certification.
+
+## 2. SCOPE OF SUPPLY
+
+### 2.1 Power Systems
+- **Quantity:** 3 units
+- **Requirements:**
+  - Power output: Minimum 4500W, preferred 5000W or higher
+  - Input voltage: 220-240V AC compatible
+  - Efficiency rating: Minimum 92%, preferred 95% or higher
+  - Cooling system: Active fan cooling required
+  - Certifications: Must have ISO 9001, CE, and UL certifications
+  - Redundancy: Hot-swap capability preferred
+  - Warranty: Minimum 3 years
+
+### 2.2 Temperature Monitoring System
+- **Quantity:** 10 sensor arrays
+- **Requirements:**
+  - Operating range: -40°C to 125°C minimum
+  - Accuracy: ±0.5°C or better
+  - Communication: RS-485 interface
+  - Protocol: Modbus RTU compatible
+  - Environmental rating: IP67 or better
+  - Certifications: ATEX certification required
+  - Response time: Under 2 seconds
+  - Calibration certificate included
+
+### 2.3 Control Systems
+- **Quantity:** 2 units
+- **Requirements:**
+  - Digital inputs: Minimum 30, preferred 32 or more
+  - Relay outputs: Minimum 12, preferred 16 or more
+  - Program memory: Minimum 128KB
+  - Communication ports: Ethernet and Serial required
+  - Programming: IEC 61131-3 compliant
+  - Certifications: CE, UL, CSA required
+  - Operating temperature: -20°C to 60°C
+  - Support: 24/7 technical support required
+
+## 3. TESTING & ACCEPTANCE REQUIREMENTS
+
+All equipment must undergo the following tests:
+- Factory Acceptance Test (FAT)
+- Site Acceptance Test (SAT)
+- Load testing at 100% and 110% capacity
+- Environmental stress testing
+- Communication interface verification
+- Safety compliance testing
+
+Estimated testing and acceptance cost should be included in the proposal.
+
+## 4. DELIVERY & INSTALLATION
+
+- Delivery required by: June 30, 2026
+- Installation at site: Austin, Texas
+- Commissioning and training included
+- All equipment must be new, not refurbished
+
+## 5. PROPOSAL REQUIREMENTS
+
+Vendors must submit:
+1. Company profile and relevant experience
+2. Detailed technical specifications for all proposed equipment
+3. Comparison table showing RFP requirements vs. proposed equipment
+4. Itemized pricing breakdown
+5. Delivery schedule
+6. Warranty and support terms
+7. References from similar projects
+
+## 6. EVALUATION CRITERIA
+
+Proposals will be evaluated based on:
+- Technical compliance: 40%
+- Pricing competitiveness: 30%
+- Delivery timeline: 15%
+- Company experience and references: 10%
+- Warranty and support: 5%
+
+## 7. CONTACT INFORMATION
+
+**Procurement Manager:** Sarah Johnson
+**Email:** procurement@acmemanufacturing.com
+**Phone:** +1 (555) 123-4567
+
+---
+
+*This RFP is for evaluation purposes. Acme Manufacturing Corporation reserves the right to accept or reject any proposal.*

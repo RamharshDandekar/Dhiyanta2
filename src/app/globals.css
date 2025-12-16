@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Background grid pattern */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Rich Text Editor - Table Styling */
+.ProseMirror table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+  margin: 1.5rem 0;
+  overflow: hidden;
+  border: 2px solid #e5e7eb;
+}
+
+.ProseMirror table td,
+.ProseMirror table th {
+  min-width: 1em;
+  border: 1px solid #d1d5db;
+  padding: 0.75rem 1rem;
+  vertical-align: top;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.ProseMirror table th {
+  font-weight: 700;
+  text-align: left;
+  background-color: #f3f4f6;
+  color: #1f2937;
+}
+
+.ProseMirror table tbody tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+.ProseMirror table tbody tr:hover {
+  background-color: #f3f4f6;
+}
+
+/* Heading Styles in Editor */
+.ProseMirror h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #111827;
+  border-bottom: 3px solid #3b82f6;
+  padding-bottom: 0.5rem;
+}
+
+.ProseMirror h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-top: 1.75rem;
+  margin-bottom: 0.875rem;
+  color: #1f2937;
+  border-bottom: 2px solid #93c5fd;
+  padding-bottom: 0.4rem;
+}
+
+.ProseMirror h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #374151;
+}
+
+/* Lists */
+.ProseMirror ul,
+.ProseMirror ol {
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+.ProseMirror li {
+  margin: 0.5rem 0;
+}
+
+/* Paragraphs */
+.ProseMirror p {
+  margin: 1rem 0;
+  line-height: 1.75;
+}
+
+/* Bold and Italic */
+.ProseMirror strong {
+  font-weight: 700;
+  color: #111827;
+}
+
+.ProseMirror em {
+  font-style: italic;
+}
+
+/* Links */
+.ProseMirror a {
+  color: #3b82f6;
+  text-decoration: underline;
+}
+
+/* Print Styles */
+@media print {
+  .ProseMirror table {
+    page-break-inside: avoid;
+  }
+  
+  .ProseMirror h1,
+  .ProseMirror h2,
+  .ProseMirror h3 {
+    page-break-after: avoid;
+  }
+}
