@@ -1,4 +1,4 @@
-import { getFlashModel, generateWithRetry } from '../gemini';
+import { getFlashModel, generateWithRetry } from '../huggingface';
 
 /**
  * Pricing Agent - Formulates pricing strategy based on technical analysis

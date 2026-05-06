@@ -1,12 +1,12 @@
 # Dhiyanta - Aegis RFP Intelligence Platform
 
-![Dhiyanta Banner](https://img.shields.io/badge/AI-Powered-blue) ![Next.js](https://img.shields.io/badge/Next.js-16.0-black) ![Google Gemini](https://img.shields.io/badge/Google-Gemini-blue) ![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC)
+![Dhiyanta Banner](https://img.shields.io/badge/AI-Powered-blue) ![Next.js](https://img.shields.io/badge/Next.js-16.0-black) ![Hugging%20Face](https://img.shields.io/badge/Hugging%20Face-Inference-yellow) ![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC)
 
 **From Data to Discernment** - An AI-powered multi-agent system for automated RFP response generation.
 
 ## 🎯 Project Overview
 
-Dhiyanta is a strategic RFP (Request for Proposal) deliberation system that automates the B2B RFP response process using Google Gemini AI. The platform simulates a team of specialized AI agents working together to analyze RFPs, match products, formulate pricing strategies, and generate comprehensive proposals.
+Dhiyanta is a strategic RFP (Request for Proposal) deliberation system that automates the B2B RFP response process using Hugging Face models, with Gemini 2.5 Flash as automatic fallback. The platform simulates a team of specialized AI agents working together to analyze RFPs, match products, formulate pricing strategies, and generate comprehensive proposals.
 
 ### Problem Statement
 
@@ -37,14 +37,14 @@ Dhiyanta uses a multi-agent AI architecture to:
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────────┐
-│  Sales Agent (Gemini 1.5 Flash)                             │
+│  Sales Agent (Hugging Face / Gemini 2.5 Flash fallback)     │
 │  • Extracts client info, due dates, requirements            │
 │  • Performs initial RFP triage                              │
 └─────────────────────┬───────────────────────────────────────┘
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────────┐
-│  Technical Agent (Gemini 1.5 Pro)                           │
+│  Technical Agent (Hugging Face / Gemini 2.5 Flash fallback) │
 │  • Matches RFP requirements with product catalog            │
 │  • Calculates spec match percentages                        │
 │  • Identifies technical risks                               │
@@ -52,7 +52,7 @@ Dhiyanta uses a multi-agent AI architecture to:
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────────┐
-│  Pricing Agent (Gemini 1.5 Pro)                             │
+│  Pricing Agent (Hugging Face / Gemini 2.5 Flash fallback)   │
 │  • Formulates pricing strategy                              │
 │  • Applies business rules and discounts                     │
 │  • Calculates testing and acceptance costs                  │
@@ -60,7 +60,7 @@ Dhiyanta uses a multi-agent AI architecture to:
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────────┐
-│  Orchestrator Agent (Gemini 1.5 Flash)                      │
+│  Orchestrator Agent (Hugging Face / Gemini 2.5 Flash fallback)│
 │  • Synthesizes final executive summary                      │
 │  • Generates GO/NO-GO recommendation                        │
 │  • Identifies strengths, risks, next steps                  │
@@ -75,7 +75,7 @@ Dhiyanta uses a multi-agent AI architecture to:
 │                 │                                            │
 │                 ▼                                            │
 │  ┌──────────────────────────────────────────────┐           │
-│  │  Revision Agent (Gemini 1.5 Pro)             │           │
+│  │  Revision Agent (Hugging Face / Gemini 2.5 Flash fallback)│           │
 │  │  • Incorporates user feedback                │           │
 │  │  • Regenerates complete proposal             │           │
 │  └──────────────────────────────────────────────┘           │
@@ -155,9 +155,9 @@ dhiyanta/
 
 - **Framework:** Next.js 16.0 (App Router)
 - **Language:** JavaScript (JSX)
-- **AI Backend:** Google Gemini API (`@google/generative-ai`)
-  - `gemini-2.5-flash` - Fast operations (Sales Agent, Orchestrator)
-  - `gemini-2.5-pro` - High-accuracy reasoning (Technical, Pricing, Revision)
+- **AI Backend:** Hugging Face Inference API (primary) + Google Gemini fallback (`@google/generative-ai`)
+   - `VITE_HF_MODEL` (default suggested: `Qwen/Qwen2.5-3B-Instruct`) - Primary inference model
+   - `gemini-2.5-flash` - Automatic fallback model when HF inference fails
 - **Styling:** Tailwind CSS 4.1
 - **Runtime:** Server-side execution for all AI operations
 
@@ -166,7 +166,8 @@ dhiyanta/
 ### Prerequisites
 
 - Node.js 18+ installed
-- Google Gemini API key ([Get one here](https://makersuite.google.com/app/apikey))
+- Hugging Face API key ([Get one here](https://huggingface.co/settings/tokens))
+- Optional: Google Gemini API key for fallback ([Get one here](https://makersuite.google.com/app/apikey))
 
 ### Step 1: Install Dependencies
 
@@ -179,10 +180,15 @@ npm install
 Create or edit `.env.local` file in the root directory:
 
 ```env
+VITE_HF_API_KEY=your_huggingface_api_key_here
+VITE_HF_MODEL=Qwen/Qwen2.5-3B-Instruct
+VITE_HF_EMBEDDING_MODEL=sentence-transformers/all-MiniLM-L6-v2
+
+# Optional fallback key (recommended)
 GEMINI_API_KEY=your_gemini_api_key_here
 ```
 
-**⚠️ IMPORTANT:** Replace `your_gemini_api_key_here` with your actual Gemini API key!
+**⚠️ IMPORTANT:** Replace `your_huggingface_api_key_here` with your actual Hugging Face token.
 
 ### Step 3: Run Development Server
 
@@ -283,14 +289,15 @@ Use the provided `sample-rfp.txt` file for testing:
 
 ### Common Issues
 
-1. **"GEMINI_API_KEY is not defined"**
-   - Ensure `.env.local` exists with valid API key
+1. **"Hugging Face API key not defined"**
+   - Ensure `.env.local` exists with valid `VITE_HF_API_KEY`
    - Restart development server after adding: `npm run dev`
 
 2. **"Failed to analyze RFP"**
-   - Check API key validity at [Google AI Studio](https://makersuite.google.com/app/apikey)
+   - Check Hugging Face token validity at [Hugging Face Settings](https://huggingface.co/settings/tokens)
    - Verify internet connection
-   - Check Gemini API quota limits
+   - Check HF model availability and quota limits
+   - If configured, Gemini 2.5 Flash fallback will be used automatically
 
 3. **Empty or incorrect analysis**
    - Ensure RFP file has readable text content
@@ -314,13 +321,15 @@ npm i -g vercel
 vercel
 
 # Set environment variables in Vercel dashboard
-# Add GEMINI_API_KEY
+# Add VITE_HF_API_KEY (and optional GEMINI_API_KEY fallback)
 ```
 
 ### Environment Variables
 
 Ensure the following are set in production:
-- `GEMINI_API_KEY` - Your Google Gemini API key
+- `VITE_HF_API_KEY` - Your Hugging Face API key
+- `VITE_HF_MODEL` - Your HF text-generation model id
+- `GEMINI_API_KEY` - Optional fallback key for Gemini 2.5 Flash
 
 ## 🎯 Future Enhancements
 
@@ -355,11 +364,11 @@ This project is a prototype for the EY Techathon 6.0 competition.
 **Team:** RamharshProgramming  
 **Project:** Dhiyanta - Aegis RFP Intelligence Platform  
 **Competition:** EY Techathon 6.0  
-**AI Model:** Google Gemini (gemini-2.5-flash, gemini-2.5-pro)  
+**AI Model:** Hugging Face primary + Gemini fallback (gemini-2.5-flash)  
 
 ---
 
-**Built with ❤️ using Next.js and Google Gemini AI**
+**Built with ❤️ using Next.js, Hugging Face, and Gemini fallback**
 
 ## 🆘 Support
 
@@ -367,4 +376,4 @@ For issues, questions, or suggestions, please refer to the project requirements 
 
 ---
 
-*Remember to add your Gemini API key to `.env.local` before running the application!*
+*Remember to add your Hugging Face API key to `.env.local` before running the application!*

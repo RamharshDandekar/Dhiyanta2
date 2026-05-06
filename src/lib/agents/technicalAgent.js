@@ -1,4 +1,4 @@
-import { getFlashModel, generateWithRetry } from '../gemini';
+import { getFlashModel, generateWithRetry } from '../huggingface';
 
 /**
  * Technical Agent - Analyzes technical requirements and feasibility

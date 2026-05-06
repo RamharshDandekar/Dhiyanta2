@@ -1,4 +1,4 @@
-import { getFlashModel, generateWithRetry } from '../gemini';
+import { getFlashModel, generateWithRetry } from '../huggingface';
 
 /**
  * Revision Agent - Incorporates user feedback and regenerates proposal

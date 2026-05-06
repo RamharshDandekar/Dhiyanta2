@@ -1,4 +1,4 @@
-import { getFlashModel, generateWithRetry } from '../gemini';
+import { getFlashModel, generateWithRetry } from '../huggingface';
 
 /**
  * Sales Agent - Performs initial RFP triage and extraction from HTML portal

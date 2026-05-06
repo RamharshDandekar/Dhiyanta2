@@ -1,4 +1,4 @@
-import { getDocumentModel, generateWithRetry } from '../gemini';
+import { getDocumentModel, generateWithRetry } from '../huggingface';
 
 /**
  * Document Generation Agent - Creates a complete tender bid submission document

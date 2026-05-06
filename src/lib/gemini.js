@@ -2,13 +2,21 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 
 // Load multiple API keys for different purposes
 const API_KEYS = {
-  primary: process.env.GEMINI_API_KEY,
-  analysis: process.env.GEMINI_API_KEY_ANALYSIS || process.env.GEMINI_API_KEY,
-  document: process.env.GEMINI_API_KEY_DOCUMENT || process.env.GEMINI_API_KEY,
+  primary: process.env.GEMINI_API_KEY || process.env.VITE_GEMINI_API_KEY,
+  analysis:
+    process.env.GEMINI_API_KEY_ANALYSIS ||
+    process.env.VITE_GEMINI_API_KEY_ANALYSIS ||
+    process.env.GEMINI_API_KEY ||
+    process.env.VITE_GEMINI_API_KEY,
+  document:
+    process.env.GEMINI_API_KEY_DOCUMENT ||
+    process.env.VITE_GEMINI_API_KEY_DOCUMENT ||
+    process.env.GEMINI_API_KEY ||
+    process.env.VITE_GEMINI_API_KEY,
 };
 
 if (!API_KEYS.primary) {
-  throw new Error('GEMINI_API_KEY is not defined in environment variables');
+  throw new Error('GEMINI_API_KEY (or VITE_GEMINI_API_KEY) is not defined in environment variables');
 }
 
 // Create separate instances for different purposes
@@ -107,13 +115,12 @@ export const getFlashModel = () => {
 };
 
 /**
- * Get Pro model - advanced thinking model for complex reasoning
- * Uses gemini-2.5-pro - best for reasoning over complex problems
- * Note: Higher rate limits may apply - prefer Flash for high volume
+ * Get Pro model alias
+ * Uses gemini-2.5-flash to keep fallback behavior consistent
  */
 export const getProModel = () => {
   return genAIPrimary.getGenerativeModel({ 
-    model: 'gemini-2.5-pro',
+    model: 'gemini-2.5-flash',
     generationConfig: {
       maxOutputTokens: 3000,
       temperature: 0.7,
